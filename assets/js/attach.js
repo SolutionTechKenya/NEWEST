@@ -5352,6 +5352,6 @@ searchForm.addEventListener('submit', async (e) => {
 
         isSearching = false;
         searchButton.disabled = false;
-        searchButton.innerHTML = 'Find Internships';
+        searchButton.innerHTML = 'Find Internships/attachments';
     }, 800);
 });
