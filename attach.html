@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8MWW1NR467"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8MWW1NR467');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attachment/Internship Finder</title>
+    <link rel="icon" type="image/png" href="assets/images/image26.png"> 
+    <link rel="stylesheet" href="assets/css/attach.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1>Attachment/Internship Finder</h1>
+            <p class="subtitle">Discover Your Perfect Career Path</p>
+        </header>
+
+        <form class="search-form" id="searchForm">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required
+                />
+            </div>
+            
+            <div class="input-group">
+                <label for="industry">Industry</label>
+                <select
+                    id="industry"
+                    required
+                >
+                    <option value="">Select an industry</option>
+                </select>
+            </div>
+
+            <button 
+                type="submit" 
+                class="search-button"
+                id="searchButton"
+            >
+                Find Internships
+            </button>
+        </form>
+
+        <div class="loading-container hidden" id="loadingContainer">
+            <div class="loading-spinner"></div>
+            <p>Loading opportunities...</p>
+        </div>
+
+        <div class="error-container hidden" id="errorContainer">
+            <div class="error-icon">!</div>
+            <p id="errorMessage"></p>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="no-results hidden" id="noResults">
+                <div class="no-results-icon">🔍</div>
+                <p>No Attachments/internships found for the selected industry</p>
+            </div>
+
+            <div class="results-grid" id="resultsGrid"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/attach.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8MWW1NR467"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8MWW1NR467');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Message Scheduler</title>
+    <link rel="icon" type="image/png" href="assets/images/image26.png"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styles if needed */
+        .form-radio {
+            @apply text-pink-600;
+            @apply border-gray-300;
+            @apply focus:ring-pink-500;
+        }
+    </style>
+    <style>
+        .heart-bg {
+            background-image: radial-gradient(circle at center, #ffebee 0%, #fce4ec 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .heart-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart-2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .heart-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+        .heart-4 { bottom: 20%; right: 10%; animation-delay: 3s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .form-container {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .heart-border {
+            position: relative;
+        }
+
+        .heart-border::before,
+        .heart-border::after {
+            content: '❤';
+            position: absolute;
+            font-size: 1.5rem;
+        }
+
+        .heart-border::before {
+            left: -2rem;
+        }
+
+        .heart-border::after {
+            right: -2rem;
+        }
+
+        .love-input {
+            transition: all 0.3s ease;
+            border: 2px solid #f8bbd0;
+        }
+
+        .love-input:focus {
+            border-color: #e91e63;
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.2);
+        }
+
+        .premium-card {
+            background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);
+        }
+    </style>
+</head>
+<!-- Rest of the HTML remains exactly the same -->
+<body class="bg-pink-50 min-h-screen">
+    <div class="floating-heart heart-1">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="#e91e63">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-heart heart-2">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#ff4081">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-heart heart-3">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="#ad1457">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+    <div class="floating-heart heart-4">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="#ec407a">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-pink-600 text-center mb-8">
+            Valentine's Day Message Scheduler
+        </h1>
+        
+        <form id="messageForm" class="max-w-lg mx-auto bg-white rounded-lg shadow-md p-6">
+            <!-- Message Type Selection -->
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Message Type</label>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="message_type" value="generated" checked 
+                               class="form-radio">
+                        <span class="ml-2">Generate message for me</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="message_type" value="custom" 
+                               class="form-radio">
+                        <span class="ml-2">Write my own message</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Names Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                    <input type="text" name="sender_name" 
+                           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                           placeholder="Enter your name"
+                           required>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Recipient's Name</label>
+                    <input type="text" name="recipient_name" 
+                           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                           placeholder="Enter recipient's name"
+                           required>
+                </div>
+            </div>
+            
+            <!-- Contact Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Country</label>
+                    <select name="phone_country" 
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                            required>
+                        <option value="">Select Country</option>
+                        <option value="KE">Kenya (+254)</option>
+                        <option value="UG">Uganda (+256)</option>
+                        <option value="TZ">Tanzania (+255)</option>
+                        <option value="US">United States (+1)</option>
+                        <option value="GB">United Kingdom (+44)</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2"> Recipient Phone Number</label>
+                    <input type="tel" name="phone_number" 
+                           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                           placeholder="Enter phone number"
+                           required>
+                    <p id="phoneError" class="text-sm text-red-500 mt-1 hidden"></p>
+                </div>
+            </div>
+            
+            <!-- Email Section -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Recipient's Email</label>
+                <input type="email" name="email" 
+                       class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                       placeholder="Email (Optional)">
+                <p class="text-sm text-gray-500 mt-1">We'll send a cute e-card if email is provided 💌</p>
+            </div>
+            
+            <!-- Relationship Section -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Relationship Status</label>
+                <select name="relationship" 
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                        required>
+                    <option value="">Select Relationship</option>
+                    <option value="girlfriend">Girlfriend</option>
+                    <option value="boyfriend">Boyfriend</option>
+                    <option value="friend">Colleague</option>
+                    <option value="spouse">Spouse</option>
+                    <option value="crush">Crush</option>
+                    <option value="friend">Friend</option>
+                    <option value="friend">Boss</option>
+                    <option value="friend">Friend With Benefits</option>
+                </select>
+            </div>
+            
+            <!-- Generated Message Section -->
+            <div id="descriptionContainer" class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    What do you love about them?
+                </label>
+                <textarea name="description" 
+                          class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                          rows="4"
+                          placeholder="Share what makes them uniquely special to you - their smile, their kindness, the way they make you feel..."
+                          required></textarea>
+                <p class="text-sm text-gray-500 mt-1">
+                    Tell us what makes them special and we'll craft a heartfelt Valentine's message that captures your feelings perfectly 💝
+                </p>
+            </div>
+
+            <!-- Custom Message Section -->
+            <div id="customMessageContainer" class="mb-4 hidden">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Your Valentine's Message
+                </label>
+                <textarea name="custom_message" 
+                          class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500" 
+                          rows="4"
+                          placeholder="Dear [name], from the moment I met you..."></textarea>
+                <p class="text-sm text-gray-500 mt-1">
+                    Express your love in your own words - write a personal Valentine's message that comes straight from your heart ❤️
+                </p>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full bg-pink-600 text-white py-3 px-4 rounded-lg hover:bg-pink-700 transition-colors duration-200 font-bold">
+                Schedule Message
+            </button>
+        </form>
+        
+        <!-- Status Message -->
+        <div id="status" class="mt-4 text-center hidden"></div>
+        <div class="max-w-lg mx-auto mt-8">
+            <button id="premiumButton" 
+                    class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors duration-200 font-bold">
+                Premium Services
+            </button>
+            
+            <div id="premiumSection" class="premium-section mt-4">
+                <form id="premiumForm" class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-purple-600 mb-4">Premium Service Request</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            Your Special Request
+                        </label>
+                        <textarea name="premium_request" 
+                                  id="premiumRequest"
+                                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-500" 
+                                  rows="4"
+                                  placeholder="Describe what special service you'd like us to do for your loved one..."
+                                  required></textarea>
+                    </div>
+    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Your Contact Number</label>
+                        <input type="tel" 
+                               name="contact_number"
+                               id="premiumContact"
+                               class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-500" 
+                               placeholder="Enter your phone number"
+                               required>
+                        <p class="text-sm text-gray-500 mt-1">We'll contact you to discuss your request</p>
+                    </div>
+    
+                    <button type="submit" 
+                            class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors duration-200 font-bold">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    
+        <script src="./static/js/main.js"></script>
+        <script>
+            
+
+ // Add floating hearts animation
+ function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤';
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = '100vh';
+    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+    heart.style.animation = 'floatUp 15s linear forwards';
+    heart.style.opacity = '0.6';
+    heart.style.zIndex = '0';
+    
+    document.body.appendChild(heart);
+
+    // Remove heart after animation
+    setTimeout(() => {
+        heart.remove();
+    }, 15000);
+}
+
+// Add floating hearts CSS animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes floatUp {
+        from {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.6;
+        }
+        to {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Create new floating hearts periodically
+setInterval(createFloatingHeart, 3000);
+        </script>
+    </body>
+    </html>
