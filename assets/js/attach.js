@@ -5305,22 +5305,20 @@ loadingContainer.classList.add('hidden');
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!industrySelect.value || isSearching) return;
-
     isSearching = true;
     searchButton.disabled = true;
     searchButton.innerHTML = `
         <span class="button-spinner"></span>
         Searching...
     `;
-
+    
     setTimeout(() => {
         filteredCompanies = companies.filter(company => 
             company.industry === industrySelect.value
         );
-
         resultsGrid.innerHTML = '';
         noResults.classList.add('hidden');
-
+        
         if (filteredCompanies.length === 0) {
             noResults.classList.remove('hidden');
         } else {
@@ -5344,12 +5342,25 @@ searchForm.addEventListener('submit', async (e) => {
                             </ul>
                         ` : '<p class="no-courses">No related courses available</p>'}
                     </div>
-                    <button class="apply-button">Apply on the official website</button>
+                    <button class="apply-button" data-company="${encodeURIComponent(company.name)}">
+                        Apply on the official website
+                    </button>
                 `;
                 resultsGrid.appendChild(card);
+
+                // Add click event listener to the apply button
+                const applyButton = card.querySelector('.apply-button');
+                applyButton.addEventListener('click', (event) => {
+                    const companyName = decodeURIComponent(event.target.dataset.company);
+                    // Create search query URL
+                    const searchQuery = `${companyName} careers apply`;
+                    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+                    // Open in new tab
+                    window.open(searchUrl, '_blank');
+                });
             });
         }
-
+        
         isSearching = false;
         searchButton.disabled = false;
         searchButton.innerHTML = 'Find Internships/attachments';
