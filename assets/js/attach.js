@@ -5343,7 +5343,7 @@ searchForm.addEventListener('submit', async (e) => {
                         ` : '<p class="no-courses">No related courses available</p>'}
                     </div>
                     <button class="apply-button" data-company="${encodeURIComponent(company.name)}">
-                        Apply on the official website
+                        Check out the official website
                     </button>
                 `;
                 resultsGrid.appendChild(card);
